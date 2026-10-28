@@ -53,7 +53,7 @@ app:
     username: ${APP_AUTH_USERNAME:xianzhi88889}
     password: ${APP_AUTH_PASSWORD:xianzhi88889}
     keycloak:
-      enabled: ${KEYCLOAK_ENABLED:false}
+      enabled: ${KEYCLOAK_ENABLED:true}
       base-url: ${KEYCLOAK_BASE_URL:http://192.168.28.188:8888/auth}
       realm: ${KEYCLOAK_REALM:elife_jdzq}
       client-id: ${KEYCLOAK_CLIENT_ID:eservice_jd}
