@@ -1,0 +1,120 @@
+// :root {
+//   /* Brand Greens */
+//   --color-green-50:  #edf5f4;
+//   --color-green-100: #cde3e3;
+//   --color-green-200: #2c787a;
+//   --color-green-300: #348d8f;
+//   --color-green-400: #0f7b7d;
+//   --color-green-500: #04595b;
+
+//   /* Gray Scale */
+//   --color-gray-50:  #fafafa;
+//   --color-gray-100: #f0f0f0;
+//   --color-gray-200: #d9d9d9;
+//   --color-gray-300: #bfbfbf;
+//   --color-gray-400: #8c8c8c;
+//   --color-gray-500: #595959;
+//   --color-gray-600: #434343;
+//   --color-gray-700: #262626;
+//   --color-gray-800: #1f1f1f;
+//   --color-gray-900: #141414;
+
+//     /* Orange Scale */
+//   --color-orange-50:  #fff7e6;
+//   --color-orange-100: #ffe7ba;
+//   --color-orange-200: #ffd591;
+//   --color-orange-300: #ffa940;
+//   --color-orange-400: #fa8c16;
+//   --color-orange-500: #d46b08;
+
+//   --color-white: #ffffff;
+//   --color-black: #000000;
+
+//   --font-weight-regular: 400;
+//   --font-weight-medium: 500;
+//   --font-weight-bold: 700;
+
+
+//   --font-size-xs: 1rem;
+//   --font-size-sm: 1.25rem;
+//   --font-size-md: 1.5rem;
+//   --font-size-lg: 1.75rem;
+//   --font-size-xl: 2rem;
+
+// }
+// src/styles/_palette.light.scss
+:root {
+  /* ==========================================
+     1. Brand Scales (nc = New Core)
+     ========================================== */
+  /* Brand Greens */
+  --nc-color-green-50:  #edf5f4;
+  --nc-color-green-100: #cde3e3;
+  --nc-color-green-200: #2c787a;
+  --nc-color-green-300: #348d8f;
+  --nc-color-green-400: #0f7b7d;
+  --nc-color-green-500: #04595b;
+
+  /* Gray Scale */
+  --nc-color-gray-50:  #fafafa;
+  --nc-color-gray-100: #f0f0f0;
+  --nc-color-gray-200: #d9d9d9;
+  --nc-color-gray-300: #bfbfbf;
+  --nc-color-gray-400: #8c8c8c;
+  --nc-color-gray-500: #595959;
+  --nc-color-gray-600: #434343;
+  --nc-color-gray-700: #262626;
+  --nc-color-gray-800: #1f1f1f;
+  --nc-color-gray-900: #141414;
+
+  /* Orange Scale */
+  --nc-color-orange-50:  #ffefcf;
+  --nc-color-orange-100: #ffe7ba;
+  --nc-color-orange-200: #ffd591;
+  --nc-color-orange-300: #ffa940;
+  --nc-color-orange-400: #fa8c16;
+  --nc-color-orange-500: #d46b08;
+
+  /* Base Colors */
+  --nc-color-white: #ffffff;
+  --nc-color-black: #000000;
+
+  /* State Colors (避免與 Bootstrap 的 --bs-success 等衝突) */
+  --nc-color-success: #28a745;
+  --nc-color-warning: #ffc107;
+  --nc-color-danger:  #dc3545;
+
+
+  /* ==========================================
+     2. Typography Scales
+     ========================================== */
+  /* Font Weights */
+  --nc-font-weight-100: 100;
+  --nc-font-weight-200: 200;
+  --nc-font-weight-300: 300;
+  --nc-font-weight-400: 400;
+  --nc-font-weight-500: 500;
+  --nc-font-weight-600: 600;
+  --nc-font-weight-700: 700;
+  --nc-font-weight-800: 800;
+  --nc-font-weight-900: 900;
+
+  /* Font Sizes */
+  --nc-font-size-0_8:   0.8rem;
+  --nc-font-size-0_875: 0.875rem;
+  --nc-font-size-11: 1.1rem;
+  --nc-font-size-12: 1.2rem;
+  --nc-font-size-13: 1.3rem;
+  --nc-font-size-14: 1.4rem;
+  --nc-font-size-15: 1.5rem;
+  --nc-font-size-16: 1.6rem;
+  --nc-font-size-17: 1.7rem;
+  --nc-font-size-18: 1.8rem;
+  --nc-font-size-19: 1.9rem;
+  --nc-font-size-20: 2.0rem;
+  --nc-font-size-21: 2.1rem;
+  --nc-font-size-22: 2.2rem;
+  --nc-font-size-23: 2.3rem;
+  --nc-font-size-24: 2.4rem;
+  --nc-font-size-25: 2.5rem;
+}

@@ -1,0 +1,4 @@
+/* 讓文字顯示成 ●●● */
+input[data-mask="true"] {
+  -webkit-text-security: disc;
+}

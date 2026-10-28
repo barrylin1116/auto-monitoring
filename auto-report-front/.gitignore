@@ -1,0 +1,22 @@
+# build artifacts
+build/
+dist/
+
+# dependencies
+node_modules/
+
+# misc
+.DS_Store
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env
+.env.sit
+.env.uat
+.env.production
+
+# IDE
+.idea/
+.vscode/

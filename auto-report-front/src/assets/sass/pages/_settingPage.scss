@@ -1,0 +1,230 @@
+// 設定類頁面（異常設定 / 節假日設定 / 記錄明細）共用版面
+.setting-page-form {
+  max-width: 640px;
+  margin: 0;   // 靠左
+
+  .ant-form-item-row {
+    row-gap: 0;
+  }
+
+  .ant-form-item-label {
+    flex: 0 0 140px;
+    width: 140px;
+    padding-right: 16px;
+  }
+
+  .ant-form-item-label > label {
+    font-size: 1.2rem;
+    height: 40px;
+    white-space: nowrap;
+  }
+
+  .ant-form-item-control-input {
+    min-height: 40px;
+  }
+
+  // select / date picker / input 字級放大
+  .ant-select-selector,
+  .ant-picker,
+  .ant-input {
+    font-size: 1.1rem;
+  }
+
+  .ant-select-selection-item,
+  .ant-select-selection-placeholder {
+    font-size: 1.1rem;
+    line-height: 38px;
+  }
+
+  // 單選按鈕：放大、與 control 同高垂直置中
+  .ant-radio-wrapper {
+    font-size: 1.1rem;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  // 保存按鈕：與 control 欄對齊（label 140px + 右側間距 16px）
+  .setting-form-actions {
+    padding-left: 156px;
+    margin-top: 8px;
+  }
+}
+
+// 異常設定表單：兩欄格線，欄位與間距統一
+.setting-page-form--two-col {
+  max-width: 840px;
+
+  // 兩欄格線，間距一致
+  .setting-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 20px;
+  }
+
+  // 跨滿兩欄的欄位（事件類型）
+  .setting-form-grid-span {
+    grid-column: 1 / -1;
+  }
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+
+  // 統一的標籤欄寬，左對齊，垂直置中
+  .ant-form-item-label {
+    flex: 0 0 132px;
+    width: 132px;
+    padding-right: 12px;
+    text-align: left;
+  }
+
+  .ant-form-item-label > label {
+    font-size: 1.05rem;
+    height: 40px;
+    color: #5f6f77;
+    white-space: nowrap;
+  }
+
+  // 控制項統一等高
+  .ant-form-item-control-input {
+    min-height: 40px;
+  }
+
+  // 輸入框 / 下拉：統一圓角與高度
+  .ant-select-selector,
+  .ant-input,
+  .ant-picker {
+    border-radius: 8px;
+  }
+
+  // 單選群組：一般樣式，選項水平排列
+  .ant-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .ant-radio-wrapper {
+      margin-inline-end: 0;
+    }
+  }
+}
+
+// 事件類型：已選項目改置於選擇框下方（膠囊標籤）
+.event-type-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+
+  .event-type-tag {
+    margin: 0;
+    padding: 3px 14px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #1f6b6d;
+    background: linear-gradient(135deg, #eaf7f7 0%, #d6eded 100%);
+    border: 1px solid #a9d6d6;
+    border-radius: 999px;
+    box-shadow: 0 1px 2px rgba(52, 141, 143, 0.12);
+
+    .ant-tag-close-icon {
+      margin-left: 6px;
+      font-size: 0.8rem;
+      color: #4a9a9c;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #17605f;
+      }
+    }
+  }
+}
+
+// 查詢/表單卡片與列表卡片間距（登入記錄明細、節假日設定等）
+.setting-query-card {
+  margin-bottom: 16px;
+}
+
+// 查詢條件列（登入記錄明細）：一行兩項、按鈕獨立一行
+.loginlog-query-form {
+  max-width: 900px;
+
+  .query-form-row {
+    display: flex;
+    column-gap: 32px;
+
+    .ant-form-item {
+      flex: 1;
+      margin-bottom: 12px;
+    }
+
+    .ant-form-item-label {
+      flex: 0 0 110px;
+      width: 110px;
+      padding-right: 16px;
+    }
+
+    .ant-form-item-label > label {
+      font-size: 1.1rem;
+      height: 40px;
+      white-space: nowrap;
+    }
+
+    .ant-form-item-control-input {
+      min-height: 40px;
+    }
+  }
+
+  // select / input 字級放大
+  .ant-select-selector,
+  .ant-input {
+    font-size: 1.1rem;
+  }
+
+  .ant-select-selection-item,
+  .ant-select-selection-placeholder {
+    font-size: 1.1rem;
+  }
+
+  // 按鈕列：獨立一行（對齊 control 欄起點）
+  .query-form-actions {
+    display: flex;
+    column-gap: 12px;
+    padding-left: 126px;
+    margin-bottom: 4px;
+
+    .ant-btn {
+      min-width: 96px;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// 查詢結果卡片（登入記錄明細 / 節假日設定）標題
+.setting-result-card {
+  .ant-card-head-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #348d8f;
+  }
+
+  // 表頭與卡片標題距離縮短
+  .setting-holiday-table {
+    margin-top: 8px;
+  }
+}
+
+// 節假日清單表格：全寬（100%）、靠左
+.setting-holiday-table {
+  width: 100%;
+  margin: 8px 0 0;
+
+  // 列高：儲存格上下 padding 8px → 12px（略高一點，表頭同步）
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

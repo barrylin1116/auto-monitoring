@@ -1,0 +1,63 @@
+package com.twfhclife.autodatastream.logrules.login;
+
+import com.twfhclife.autodatastream.model.LogEntry;
+import com.twfhclife.autodatastream.service.TimeCheckerService;
+import java.util.Map;
+
+global TimeCheckerService timeCheckerService;
+global String systemPrefix;
+
+/**
+ * 从 attributes Map 中按动态键取值。
+ * systemPrefix 由 Java 侧根据 bizName 计算并设置为 global（如 misf.login.）。
+ */
+function String getAttr(Map attributes, String prefix, String key) {
+    if (attributes == null || prefix == null) {
+        return null;
+    }
+    return (String) attributes.get(prefix + key);
+}
+
+// 同一帳號 10 分鐘內登入 5 次以上：以業務登入時間（{system}.login.login_time）為時間基準
+rule "TOO_FREQUENT_LOGINS"
+    when
+        $e : LogEntry( bizName != null, bizName.endsWith("LOGIN") )
+        $m : String() from getAttr($e.attributes, systemPrefix, "account")
+        $lt : String() from getAttr($e.attributes, systemPrefix, "login_time")
+        $t : Long( this > 0 ) from timeCheckerService.toEpochMillis($lt)
+        $logs : java.util.List( size >= 5 ) from collect(
+            LogEntry( bizName == $e.bizName,
+                      getAttr(attributes, systemPrefix, "account") == $m,
+                      getAttr(attributes, systemPrefix, "login_time") != null,
+                      timeCheckerService.toEpochMillis(getAttr(attributes, systemPrefix, "login_time")) <= $t,
+                      timeCheckerService.toEpochMillis(getAttr(attributes, systemPrefix, "login_time")) >= ($t - 600000) ) )
+    then
+        $e.addMatchedRule( "TOO_FREQUENT_LOGINS", $logs );
+end
+
+// 同一帳號單日登入 20 次以上：以業務登入時間（{system}.login.login_time）的日期分組
+rule "TOO_MANY_DAILY_LOGINS"
+    when
+        $e : LogEntry( bizName != null, bizName.endsWith("LOGIN") )
+        $m : String() from getAttr($e.attributes, systemPrefix, "account")
+        $d : String() from getAttr($e.attributes, systemPrefix, "login_time")
+        $db : String( this != null ) from timeCheckerService.toDayKey($d)
+        $logs : java.util.List( size >= 20 ) from collect(
+            LogEntry( bizName == $e.bizName,
+                      getAttr(attributes, systemPrefix, "account") == $m,
+                      getAttr(attributes, systemPrefix, "login_time") != null,
+                      timeCheckerService.toDayKey(getAttr(attributes, systemPrefix, "login_time")) == $db ) )
+    then
+        $e.addMatchedRule( "TOO_MANY_DAILY_LOGINS", $logs );
+end
+
+// 非上班時間登入：以業務登入时间（{system}.login.login_time）判定
+rule "OFF_HOURS_LOGIN"
+    when
+        $e : LogEntry( bizName != null, bizName.endsWith("LOGIN") )
+        $acc : String() from getAttr($e.attributes, systemPrefix, "account")
+        $lt : String() from getAttr($e.attributes, systemPrefix, "login_time")
+        eval( timeCheckerService.isNonWorkTime($lt) )
+    then
+        $e.addMatchedRule( "OFF_HOURS_LOGIN" );
+end

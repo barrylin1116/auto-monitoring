@@ -1,0 +1,127 @@
+// 主佈局：左側目錄 + 頂欄 + 內容區
+.main-layout {
+  min-height: 100vh;
+
+  // 左側目錄底色：系統主綠
+  .main-layout-sider.ant-layout-sider-light {
+    background-color: #348d8f;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+
+    .main-layout-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 72px;
+      padding: 0 20px;
+
+      img {
+        height: 32px;
+        max-width: 200px;
+        object-fit: contain;
+      }
+
+      .main-layout-logo-text {
+        white-space: nowrap;
+        font-size: 1.2rem;
+        color: #fff;
+      }
+
+      // 收合：logo 置中、縮小
+      &.is-collapsed {
+        justify-content: center;
+        padding: 0;
+
+        img {
+          max-width: 40px;
+        }
+      }
+    }
+
+    .main-sider-menu.ant-menu {
+      background-color: transparent;
+
+      .ant-menu-item {
+        font-size: 1.1rem;
+        height: 50px;
+        line-height: 50px;
+        margin-block: 4px;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.85);
+
+        .anticon {
+          font-size: 1.2rem;
+        }
+      }
+
+      .ant-menu-item:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+        color: #fff;
+      }
+
+      .ant-menu-item-selected {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+
+    // 收合時：僅顯示 icon，置中對齊
+    .main-sider-menu.ant-menu-inline-collapsed {
+      .ant-menu-item {
+        height: 50px;
+        line-height: 50px;
+        padding-inline: calc(50% - 10px) !important;
+        margin-block: 4px;
+      }
+    }
+  }
+
+  .main-layout-header {
+    background: #fff;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #f0f0f0;
+
+    // 折疊按鈕圖標改為系統主綠
+    .ant-btn-icon-only,
+    .ant-btn-icon-only:hover,
+    .ant-btn-icon-only:focus {
+      color: #348d8f;
+    }
+
+    .main-layout-header-title {
+      font-size: 1.2rem;
+      color: #348d8f;
+    }
+
+    // 右側：登入使用者 + 登出
+    .main-layout-header-user {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .main-layout-header-username {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #348d8f;
+
+        .anticon {
+          color: #348d8f;
+        }
+      }
+
+      .ant-btn {
+        color: #348d8f;
+      }
+    }
+  }
+
+  .main-layout-content {
+    padding: 24px;
+    overflow: auto;
+  }
+}

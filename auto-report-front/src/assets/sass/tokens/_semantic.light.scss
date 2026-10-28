@@ -1,0 +1,266 @@
+// :root {
+//   /* Text */
+//   --text-primary: var(--color-gray-900);
+//   --text-secondary: var(--color-gray-600);
+//   --text-muted: var(--color-gray-400);
+//   --text-inverse: var(--color-white);
+//   /* 淺綠色文字：適合放在深色背景上，或作為極輕微的輔助字 */
+//   --text-green-light: var(--color-green-100); 
+
+//   /* 品牌色文字：用於連結、需要帶綠色調的副標題 */
+//   --text-green-primary: var(--color-green-300);
+
+//   /* 強調色文字：比 Primary 更深，適合用於 Hover 狀態或小面積強調 */
+//   --text-green-emphasis: var(--color-green-400);
+
+//   /* 深綠色文字：具備足夠對比度，適合用於淺綠背景(green-50)上的內文 */
+//   --text-green-strong: var(--color-green-500);
+
+//   /* 狀態文字：若你的 Success 狀態想與品牌綠色統一 */
+//   --text-success-strong: var(--color-green-500);
+
+//   /* Background */
+//   --bg-primary: var(--color-white);
+//   --bg-secondary: var(--color-gray-50);
+//   --bg-tertiary: var(--color-gray-100);
+//   --bg-overlay: rgba(0, 0, 0, 0.4);
+//   --bg-green-light: var(--color-green-100);
+
+//   /* 版面背景 */
+//   --bg-header-default: var(--color-white);
+//   --bg-header-inverse: var(--color-green-300); // 深色背景 + 淺色字
+//   --bg-footer-default: var(--color-white);
+//   --bg-footer-inverse: var(--color-green-300); // 深色背景 + 淺色字
+//   --bg-inverse: var(--color-green-300); // 深色背景 + 淺色字
+//   --bg-tab-inverse: var(--color-green-300); // 深色背景 + 淺色字
+//   // --bg-footer
+//   // --bg-sidebar
+
+//   /* Border */
+//   --border-default: var(--color-gray-200);
+//   --border-strong: var(--color-green-300);
+
+//   /* Brand */
+//   --brand-primary: var(--color-green-300);
+//   --brand-secondary: var(--color-green-400);
+
+//   /* State */
+//   --state-success: #28a745;
+//   --state-warning: #ffc107;
+//   --state-danger: #dc3545;
+
+//   /* Form */
+//   --form-label-size: var(--font-size-sm);
+//   --form-label-weight: var(--font-weight-regular);
+
+//   --form-label-color: var(--text-primary);
+//   --form-label-color-default: var(--text-primary);
+//   --form-label-color-primary: var(--color-gray-600);
+
+//   /* Size */
+//   --height-lg: 50px;
+//   --min-height-lg: 50px;
+// }
+
+// src/styles/_semantic.light.scss
+:root {
+  /* ==========================================
+     [GROUP 1] TEXT COLORS (文字顏色)
+     ========================================== */
+  /* Text - Brand Greens */
+  --nc-text-green-50:  var(--nc-color-green-50);
+  --nc-text-green-100: var(--nc-color-green-100);
+  --nc-text-green-200: var(--nc-color-green-200);
+  --nc-text-green-300: var(--nc-color-green-300);
+  --nc-text-green-400: var(--nc-color-green-400);
+  --nc-text-green-500: var(--nc-color-green-500);
+
+  /* Text - Gray Scale */
+  --nc-text-gray-50:  var(--nc-color-gray-50);
+  --nc-text-gray-100: var(--nc-color-gray-100);
+  --nc-text-gray-200: var(--nc-color-gray-200);
+  --nc-text-gray-300: var(--nc-color-gray-300);
+  --nc-text-gray-400: var(--nc-color-gray-400);
+  --nc-text-gray-500: var(--nc-color-gray-500);
+  --nc-text-gray-600: var(--nc-color-gray-600);
+  --nc-text-gray-700: var(--nc-color-gray-700);
+  --nc-text-gray-800: var(--nc-color-gray-800);
+  --nc-text-gray-900: var(--nc-color-gray-900);
+
+  /* Text - Orange Scale */
+  --nc-text-orange-50:  var(--nc-color-orange-50);
+  --nc-text-orange-100: var(--nc-color-orange-100);
+  --nc-text-orange-200: var(--nc-color-orange-200);
+  --nc-text-orange-300: var(--nc-color-orange-300);
+  --nc-text-orange-400: var(--nc-color-orange-400);
+  --nc-text-orange-500: var(--nc-color-orange-500);
+
+  /* Text - Base & States */
+  --nc-text-white:   var(--nc-color-white);
+  --nc-text-black:   var(--nc-color-black);
+  --nc-text-success: var(--nc-color-success);
+  --nc-text-warning: var(--nc-color-warning);
+  --nc-text-danger:  var(--nc-color-danger);
+
+  /* Text Alias */
+  --nc-text-primary:          var(--nc-text-gray-900);
+  --nc-text-secondary:        var(--nc-text-gray-600);
+  --nc-text-muted:            var(--nc-text-gray-400);
+  --nc-text-inverse:          var(--nc-text-white);
+  --nc-text-green-light:      var(--nc-text-green-100);
+  --nc-text-green-primary:    var(--nc-text-green-300);
+  --nc-text-green-emphasis:   var(--nc-text-green-400);
+  --nc-text-green-strong:     var(--nc-text-green-500);
+  --nc-text-success-strong:   var(--nc-text-green-500);
+
+
+  /* ==========================================
+     [GROUP 2] BACKGROUND COLORS (背景顏色)
+     ========================================== */
+  /* Background - Brand Greens */
+  --nc-bg-green-50:  var(--nc-color-green-50);
+  --nc-bg-green-100: var(--nc-color-green-100);
+  --nc-bg-green-200: var(--nc-color-green-200);
+  --nc-bg-green-300: var(--nc-color-green-300);
+  --nc-bg-green-400: var(--nc-color-green-400);
+  --nc-bg-green-500: var(--nc-color-green-500);
+
+  /* Background - Gray Scale */
+  --nc-bg-gray-50:  var(--nc-color-gray-50);
+  --nc-bg-gray-100: var(--nc-color-gray-100);
+  --nc-bg-gray-200: var(--nc-color-gray-200);
+  --nc-bg-gray-300: var(--nc-color-gray-300);
+  --nc-bg-gray-400: var(--nc-color-gray-400);
+  --nc-bg-gray-500: var(--nc-color-gray-500);
+  --nc-bg-gray-600: var(--nc-color-gray-600);
+  --nc-bg-gray-700: var(--nc-color-gray-700);
+  --nc-bg-gray-800: var(--nc-color-gray-800);
+  --nc-bg-gray-900: var(--nc-color-gray-900);
+
+  /* Background - Orange Scale */
+  --nc-bg-orange-50:  var(--nc-color-orange-50);
+  --nc-bg-orange-100: var(--nc-color-orange-100);
+  --nc-bg-orange-200: var(--nc-color-orange-200);
+  --nc-bg-orange-300: var(--nc-color-orange-300);
+  --nc-bg-orange-400: var(--nc-color-orange-400);
+  --nc-bg-orange-500: var(--nc-color-orange-500);
+
+  /* Background - Base & States */
+  --nc-bg-white:   var(--nc-color-white);
+  --nc-bg-black:   var(--nc-color-black);
+  --nc-bg-success: var(--nc-color-success);
+  --nc-bg-warning: var(--nc-color-warning);
+  --nc-bg-danger:  var(--nc-color-danger);
+
+  /* Background Alias */
+  --nc-bg-primary:        var(--nc-bg-white);
+  --nc-bg-secondary:      var(--nc-bg-gray-50);
+  --nc-bg-tertiary:       var(--nc-bg-gray-100);
+  --nc-bg-overlay:        rgba(0, 0, 0, 0.4);
+  --nc-bg-green-light:    var(--nc-bg-green-100);
+  --nc-bg-header-default: var(--nc-bg-white);
+  --nc-bg-header-inverse: var(--nc-bg-green-300);
+  --nc-bg-footer-default: var(--nc-bg-white);
+  --nc-bg-footer-inverse: var(--nc-bg-green-300);
+  --nc-bg-inverse:        var(--nc-bg-green-300);
+  --nc-bg-tab-inverse:    var(--nc-bg-green-300);
+
+
+  /* ==========================================
+     [GROUP 3] BORDER COLORS (邊框顏色)
+     ========================================== */
+  /* Border - Brand Greens */
+  --nc-border-green-50:  var(--nc-color-green-50);
+  --nc-border-green-100: var(--nc-color-green-100);
+  --nc-border-green-200: var(--nc-color-green-200);
+  --nc-border-green-300: var(--nc-color-green-300);
+  --nc-border-green-400: var(--nc-color-green-400);
+  --nc-border-green-500: var(--nc-color-green-500);
+
+  /* Border - Gray Scale */
+  --nc-border-gray-50:  var(--nc-color-gray-50);
+  --nc-border-gray-100: var(--nc-color-gray-100);
+  --nc-border-gray-200: var(--nc-color-gray-200);
+  --nc-border-gray-300: var(--nc-color-gray-300);
+  --nc-border-gray-400: var(--nc-color-gray-400);
+  --nc-border-gray-500: var(--nc-color-gray-500);
+  --nc-border-gray-600: var(--nc-color-gray-600);
+  --nc-border-gray-700: var(--nc-color-gray-700);
+  --nc-border-gray-800: var(--nc-color-gray-800);
+  --nc-border-gray-900: var(--nc-color-gray-900);
+
+  /* Border - Orange Scale */
+  --nc-border-orange-50:  var(--nc-color-orange-50);
+  --nc-border-orange-100: var(--nc-color-orange-100);
+  --nc-border-orange-200: var(--nc-color-orange-200);
+  --nc-border-orange-300: var(--nc-color-orange-300);
+  --nc-border-orange-400: var(--nc-color-orange-400);
+  --nc-border-orange-500: var(--nc-color-orange-500);
+
+  /* Border - Base & States */
+  --nc-border-white:   var(--nc-color-white);
+  --nc-border-black:   var(--nc-color-black);
+  --nc-border-success: var(--nc-color-success);
+  --nc-border-warning: var(--nc-color-warning);
+  --nc-border-danger:  var(--nc-color-danger);
+
+  /* Border Alias */
+  --nc-border-default: var(--nc-border-gray-200);
+  --nc-border-strong:  var(--nc-border-green-300);
+
+
+  /* ==========================================
+     [GROUP 4] BRAND & STATE ALIAS (品牌與狀態語意)
+     ========================================== */
+  --nc-brand-primary:   var(--nc-color-green-300);
+  --nc-brand-secondary: var(--nc-color-green-400);
+
+  --nc-state-success:   var(--nc-color-success);
+  --nc-state-warning:   var(--nc-color-warning);
+  --nc-state-danger:    var(--nc-color-danger);
+
+
+  /* ==========================================
+     [GROUP 5] FORMS & INTERACTION (表單與佈局元件)
+     ========================================== */
+  --nc-form-label-size:          var(--nc-font-size-13);
+  --nc-form-label-weight:        var(--nc-font-weight-400);
+  --nc-form-label-color:         var(--nc-text-primary);
+  --nc-form-label-color-default: var(--nc-text-primary);
+  --nc-form-label-color-primary: var(--nc-text-gray-600);
+
+  --nc-height-lg:     50px;
+  --nc-min-height-lg: 50px;
+
+
+  /* ==========================================
+     [GROUP 6] SEMANTIC TYPOGRAPHY (字體階層擴增)
+     ========================================== */
+  /* 語意化字級定義 */
+  --nc-fs-micro:   var(--nc-font-size-0_8);
+  --nc-fs-mini:    var(--nc-font-size-0_875);
+  --nc-fs-caption: var(--nc-font-size-11);
+  --nc-fs-small:   var(--nc-font-size-12);
+  --nc-fs-body-sm: var(--nc-font-size-13);
+  --nc-fs-body:    var(--nc-font-size-14);
+  --nc-fs-body-lg: var(--nc-font-size-15);
+  --nc-fs-sub-h3:  var(--nc-font-size-16);
+  --nc-fs-sub-h2:  var(--nc-font-size-17);
+  --nc-fs-sub-h1:  var(--nc-font-size-18);
+  --nc-nc-fs-h6:   var(--nc-font-size-19);
+  --nc-fs-h5:      var(--nc-font-size-20);
+  --nc-fs-h4:      var(--nc-font-size-21);
+  --nc-fs-h3:      var(--nc-font-size-22);
+  --nc-fs-h2:      var(--nc-font-size-23);
+  --nc-fs-h1:      var(--nc-font-size-24);
+  --nc-fs-display: var(--nc-font-size-25);
+
+  /* 語意化字重定義 */
+  --nc-fw-thin:     var(--nc-font-weight-100);
+  --nc-fw-light:    var(--nc-font-weight-300);
+  --nc-fw-regular:  var(--nc-font-weight-400);
+  --nc-fw-medium:   var(--nc-font-weight-500);
+  --nc-fw-semibold: var(--nc-font-weight-600);
+  --nc-fw-bold:     var(--nc-font-weight-700);
+  --nc-fw-heavy:    var(--nc-font-weight-900);
+}

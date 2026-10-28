@@ -1,0 +1,112 @@
+spring:
+  application:
+    name: auto-collecting
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:192.168.28.132:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all                        # 等所有副本确认，避免数据丢失
+      retries: 2147483647              # 无限重试
+      properties:
+        enable.idempotence: true       # 幂等生产者，避免重试产生重复
+        max.in.flight.requests.per.connection: 5
+        max.block.ms: 3000
+        request.timeout.ms: 4000
+        delivery.timeout.ms: 120000
+        default.api.timeout.ms: 6000
+
+app:
+  collect:
+    tail-delay-ms: 1000
+    sources:
+      - name: misapi
+        path: E:\\workspace\\log\\mis.log_3
+        from-beginning: true
+        line-pattern: '^(?<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+\[(?<level>\w+)\]\s+(?<trace>\S+)\s+\[(?<thread>[^\]]+)\]\s+\((?<logger>[^)]+)\)(?<message>\w+\s*-\s*.*)$'
+        line-fields:
+          ts: timestamp
+          level: level
+          thread: thread
+          logger: logger
+          message: message
+        patterns:
+          - pattern: '帳號[:：]\s*(?<account>.*?)\s*[,，]?\s*姓名[:：]\s*(?<name>.*?)\s*[,，]?\s*通路/分支[:：]\s*(?<branch>.*?)\s*[,，]?\s*角色[:：]\s*(?<role>.*?)\s*[,，]?\s*登入時間[:：]\s*(?<loginTime>.*?)\s*[,，]?\s*登出時間[:：]\s*(?<logoutTime>.*?)\s*[,，]?\s*登入結果[:：]\s*(?<loginResult>.*?)\s*[,，]?\s*失敗次數[:：]\s*(?<failCount>.*?)\s*[,，]?\s*來源IP[:：]\s*(?<sourceIp>.*?)\s*[,，]?\s*來源地區[:：]\s*(?<sourceArea>.*?)\s*[,，]?\s*狀置資訊[:：]\s*(?<deviceInfo>.*?)\s*[,，]?\s*登入方式[:：]\s*(?<loginMethod>.*?)\s*'
+            biz-name: MISF_LOGIN
+            fields:
+              account: misf.login.account
+              name: misf.login.name
+              branch: misf.login.channel_branch
+              role: misf.login.role
+              loginTime: misf.login.login_time
+              logoutTime: misf.login.logout_time
+              loginResult: misf.login.login_result
+              failCount: misf.login.fail_count
+              sourceIp: misf.login.source_ip
+              sourceArea: misf.login.source_area
+              deviceInfo: misf.login.device_info
+              loginMethod: misf.login.login_method
+        date-time-fields:
+          - misf.login.login_time
+          - misf.login.logout_time
+      - name: eservice_jd
+        path: E:\\home\\twfhclife\\eservice_jd\\logs\\eservice_jd.log_3
+        from-beginning: true
+        line-pattern: '^(?<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?<level>[A-Z]+)\s+(?<logger>\S+)\s+\[(?<thread>[^\]]+)\]\s+(?<message>[\s\S]*)$'
+        line-fields:
+          timestamp: timestamp
+          level: level
+          thread: thread
+          logger: logger
+          message: message
+        patterns:
+          - pattern: '帳號[:：]\s*(?<account>.*?)\s*[,，]?\s*姓名[:：]\s*(?<name>.*?)\s*[,，]?\s*通路/分支[:：]\s*(?<branch>.*?)\s*[,，]?\s*角色[:：]\s*(?<role>.*?)\s*[,，]?\s*登入時間[:：]\s*(?<loginTime>.*?)\s*[,，]?\s*登出時間[:：]\s*(?<logoutTime>.*?)\s*[,，]?\s*登入結果[:：]\s*(?<loginResult>.*?)\s*[,，]?\s*失敗次數[:：]\s*(?<failCount>.*?)\s*[,，]?\s*來源IP[:：]\s*(?<sourceIp>.*?)\s*[,，]?\s*來源地區[:：]\s*(?<sourceArea>.*?)\s*[,，]?\s*狀置資訊[:：]\s*(?<deviceInfo>.*?)\s*[,，]?\s*登入方式[:：]\s*(?<loginMethod>.*?)\s*'
+            biz-name: ESERVICE_JD_LOGIN
+            fields:
+              account: eservice_jd.login.account
+              name: eservice_jd.login.name
+              branch: eservice_jd.login.channel_branch
+              role: eservice_jd.login.role
+              loginTime: eservice_jd.login.login_time
+              logoutTime: eservice_jd.login.logout_time
+              loginResult: eservice_jd.login.login_result
+              failCount: eservice_jd.login.fail_count
+              sourceIp: eservice_jd.login.source_ip
+              sourceArea: eservice_jd.login.source_area
+              deviceInfo: eservice_jd.login.device_info
+              loginMethod: eservice_jd.login.login_method
+          - pattern: '帳號:\s*(?<account>[^,]+),\s*操作時間:\s*(?<operationTime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\s*功能/畫面:\s*(?<functionScreen>[^,]+),\s*操作動作:\s*(?<action>[^,]+),\s*操作結果:\s*(?<actionResult>[^,]+),\s*操作内容:\s*(?<actionContent>\{[\s\S]*\})\s*$'
+            biz-name: ESERVICE_JD_OPERATION
+            fields:
+              account: eservice_jd.operation.account
+              operationTime: eservice_jd.operation.time
+              functionScreen: eservice_jd.operation.function_screen
+              action: eservice_jd.operation.action
+              actionContent: eservice_jd.operation.action_content
+              actionResult: eservice_jd.operation.action_result
+        date-time-fields:
+          - eservice_jd.operation.time
+          - eservice_jd.login.login_time
+          - eservice_jd.login.login_time
+  kafka:
+    topics:
+      suffix: _collecting_logs        # 目标 topic 规则：{bizName}_collecting_logs
+  telemetry:
+    filter:
+      min-level: INFO              # 只保留 >= 该级别（TRACE/DEBUG/INFO/WARN/ERROR/FATAL）
+      sources-allowlist: []        # 非空时只处理这些 source
+      sources-denylist: []         # 非空时排除这些 source
+    processor:
+      max-message-length: 2000     # 超长消息截断
+      drop-empty-message: true     # 清洗后为空的消息丢弃
+      add-processed-at: true       # 追加处理时间戳 processedAt
+      redact-regexes:              # 敏感字段脱敏
+        - "(?i)(password|passwd|pwd|token|secret|api[_-]?key)=([^&\\s,\"]+)"
+  otel:
+    enabled: ${APP_OTEL_ENABLED:true}
+    endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:http://localhost:4318/v1/logs}
+    service-name: auto-collecting
+
+logging:
+  level:
+    com.twfhclife.autocollecting: INFO

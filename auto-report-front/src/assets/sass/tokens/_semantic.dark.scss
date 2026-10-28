@@ -1,0 +1,19 @@
+[data-theme="dark"] {
+  --text-primary: var(--color-gray-900);
+  --text-secondary: var(--color-gray-600);
+  --text-muted: var(--color-gray-500);
+  --text-inverse: var(--color-white);
+
+  --bg-primary: var(--color-gray-50);
+  --bg-secondary: var(--color-gray-100);
+  --bg-tertiary: var(--color-gray-200);
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+
+  --border-default: var(--color-gray-300);
+  --border-strong: var(--color-green-400);
+
+  --brand-primary: var(--color-green-400);
+  --brand-secondary: var(--color-green-500);
+
+  --form-label-color: var(--text-primary);
+}

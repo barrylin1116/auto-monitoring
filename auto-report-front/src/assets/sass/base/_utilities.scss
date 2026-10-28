@@ -1,0 +1,107 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.vh-100 {
+  &.dvh-100 {
+    height: 100dvh !important;
+  }
+}
+
+/* ==========================================
+   [GROUP 2] BACKGROUND UTILITIES (背景工具類)
+   ========================================== */
+.nc-bg-primary        { background-color: var(--nc-bg-primary) !important; }
+.nc-bg-secondary      { background-color: var(--nc-bg-secondary) !important; }
+.nc-bg-tertiary       { background-color: var(--nc-bg-tertiary) !important; }
+.nc-bg-brand          { background-color: var(--nc-brand-primary) !important; }
+.nc-bg-overlay        { background-color: var(--nc-bg-overlay) !important; }
+.nc-bg-inverse        { background-color: var(--nc-bg-inverse) !important; }
+.nc-bg-header-default { background-color: var(--nc-bg-header-default) !important; }
+.nc-bg-header-inverse { background-color: var(--nc-bg-header-inverse) !important; }
+.nc-bg-footer-default { background-color: var(--nc-bg-footer-default) !important; }
+.nc-bg-footer-inverse { background-color: var(--nc-bg-footer-inverse) !important; }
+.nc-bg-tab-inverse    { background-color: var(--nc-bg-tab-inverse) !important; }
+.nc-bg-white          { background-color: var(--nc-bg-white) !important; }
+.nc-bg-black          { background-color: var(--nc-bg-black) !important; }
+
+// 動態生成 1:1 的色階背景工具類 (例如: .nc-bg-green-300, .nc-bg-gray-500)
+$colors: "green", "gray", "orange";
+$steps: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+@each $color in $colors {
+  @each $step in $steps {
+    // 綠色跟橘色只有 50~500，灰色有 50~900，這裡做個安全檢查防呆
+    @if ($color == "gray") or ($step <= 500) {
+      .nc-bg-#{$color}-#{$step} {
+        background-color: var(--nc-bg-#{$color}-#{$step}) !important;
+      }
+    }
+  }
+}
+
+/* ==========================================
+   [GROUP 3] TEXT COLOR UTILITIES (文字顏色工具類)
+   ========================================== */
+.nc-text-primary        { color: var(--nc-text-primary) !important; }
+.nc-text-secondary      { color: var(--nc-text-secondary) !important; }
+.nc-text-muted          { color: var(--nc-text-muted) !important; }
+.nc-text-inverse        { color: var(--nc-text-inverse) !important; }
+.nc-text-brand          { color: var(--nc-brand-primary) !important; }
+.nc-text-green-light    { color: var(--nc-text-green-light) !important; }
+.nc-text-green-primary  { color: var(--nc-text-green-primary) !important; }
+.nc-text-green-emphasis { color: var(--nc-text-green-emphasis) !important; }
+.nc-text-green-strong   { color: var(--nc-text-green-strong) !important; }
+.nc-text-success-strong { color: var(--nc-text-success-strong) !important; }
+.nc-text-white          { color: var(--nc-text-white) !important; }
+.nc-text-black          { color: var(--nc-text-black) !important; }
+
+// 動態生成 1:1 的色階文字工具類 (例如: .nc-text-orange-400, .nc-text-gray-900)
+@each $color in $colors {
+  @each $step in $steps {
+    @if ($color == "gray") or ($step <= 500) {
+      .nc-text-#{$color}-#{$step} {
+        color: var(--nc-text-#{$color}-#{$step}) !important;
+      }
+    }
+  }
+}
+
+/* ==========================================
+   [GROUP 4] TYPOGRAPHY SIZES & WEIGHTS (字級與字重工具類)
+   ========================================== */
+// 1. 語意化字級工具類 (例如: .nc-fs-body, .nc-fs-h1)
+$semantic-sizes: (
+  "micro", "mini", "caption", "small", "body-sm", "body", "body-lg", 
+  "sub-h3", "sub-h2", "sub-h1", "h6", "h5", "h4", "h3", "h2", "h1", "display"
+);
+@each $size in $semantic-sizes {
+  .nc-fs-#{$size} {
+    font-size: var(--nc-fs-#{$size}) !important;
+  }
+}
+
+// 2. 語意化字重工具類 (例如: .nc-fw-bold)
+$semantic-weights: ("thin", "light", "regular", "medium", "semibold", "bold", "heavy");
+@each $weight in $semantic-weights {
+  .nc-fw-#{$weight} {
+    font-weight: var(--nc-fw-#{$weight}) !important;
+  }
+}
+
+/* ==========================================
+   [GROUP 5] BORDER UTILITIES (邊框工具類)
+   ========================================== */
+.nc-border-default { border-color: var(--nc-border-default) !important; }
+.nc-border-strong  { border-color: var(--nc-border-strong) !important; }
+
+// 動態生成 1:1 的色階邊框工具類 (例如: .nc-border-green-300)
+@each $color in $colors {
+  @each $step in $steps {
+    @if ($color == "gray") or ($step <= 500) {
+      .nc-border-#{$color}-#{$step} {
+        border-color: var(--nc-border-#{$color}-#{$step}) !important;
+      }
+    }
+  }
+}
