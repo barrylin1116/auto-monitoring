@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: prod
+
+app:
+  otel:
+    enabled: ${APP_OTEL_ENABLED:false}
+    endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:}
+    service-name: auto-collecting

@@ -16,21 +16,18 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
-        metadata.max.age.ms: 5000   # 缩短元数据刷新，让正则订阅更快发现新 topic
+        metadata.max.age.ms: 5000
     listener:
-      ack-mode: manual_immediate     # 处理完成后手动提交，避免丢消息
+      ack-mode: manual_immediate
 
 app:
   topics:
-    pattern: ".*_collecting_logs"   # 订阅所有 {bizName}_collecting_logs topic
-  misf-login:
-    lock-url: ${MISF_LOGIN_LOCK_URL:http://localhost:8083/eservice_api/autoMonitoring/lockAccount}   # 命中规则后锁定账号的外部 API（POST JSON {userId,status}），留空则跳过
+    pattern: ".*_collecting_logs"
 
-# OpenSearch（与 auto-report-backend 同一集群）
 opensearch:
   host: ${OPENSEARCH_HOST:192.168.28.132}
   port: ${OPENSEARCH_PORT:9200}
-  username: ${OPENSEARCH_USERNAME:admin}          # 空 = 不启用认证
+  username: ${OPENSEARCH_USERNAME:admin}
   password: ${OPENSEARCH_PASSWORD:Txz123456..}
 
 logging:

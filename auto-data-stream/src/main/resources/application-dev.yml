@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dev
+
+app:
+  misf-login:
+    lock-url: ${MISF_LOGIN_LOCK_URL:http://localhost:8083/eservice_api/autoMonitoring/lockAccount}
