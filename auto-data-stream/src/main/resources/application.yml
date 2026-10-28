@@ -1,34 +1,8 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: auto-data-stream
-  redis:
-    host: ${REDIS_HOST:192.168.28.188}
-    port: ${REDIS_PORT:6379}
-    password: ${REDIS_PASSWORD:123456}
-    database: ${REDIS_DATABASE:3}
-    timeout: 3000ms
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:192.168.28.132:9092}
-    consumer:
-      group-id: auto-data-stream-consumer-group
-      auto-offset-reset: earliest
-      enable-auto-commit: false
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        metadata.max.age.ms: 5000
-    listener:
-      ack-mode: manual_immediate
-
-app:
-  topics:
-    pattern: ".*_collecting_logs"
-
-opensearch:
-  host: ${OPENSEARCH_HOST:192.168.28.132}
-  port: ${OPENSEARCH_PORT:9200}
-  username: ${OPENSEARCH_USERNAME:admin}
-  password: ${OPENSEARCH_PASSWORD:Txz123456..}
 
 logging:
   level:

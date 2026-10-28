@@ -1,23 +1,67 @@
 spring:
-  profiles:
-    active: prod
+  application:
+    name: auto-report-backend
+  datasource:
+    url: "${MSSQL_URL:jdbc:sqlserver://192.168.28.188:1433;databaseName=eservice_jd;encrypt=true;trustServerCertificate=true}"
+    username: ${MSSQL_USERNAME:SA}
+    password: ${MSSQL_PASSWORD:SA@123456}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      pool-name: MssqlHikariPool
+  datasource-secondary:
+    url: "${MSSQL_SECONDARY_URL:jdbc:sqlserver://192.168.28.188:1433;databaseName=ESERVICE_ADM;encrypt=true;trustServerCertificate=true}"
+    username: ${MSSQL_SECONDARY_USERNAME:SA}
+    password: ${MSSQL_SECONDARY_PASSWORD:SA@123456}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      pool-name: MssqlSecondaryHikariPool
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  redis:
+    host: ${REDIS_HOST:192.168.28.188}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:123456}
+    timeout: 3000ms
+    database: 3
+  session:
+    store-type: redis
+    timeout: 30m
+    redis:
+      repository-type: default
+
+opensearch:
+  host: ${OPENSEARCH_HOST:192.168.28.132}
+  port: ${OPENSEARCH_PORT:9200}
+  username: ${OPENSEARCH_USERNAME:admin}
+  password: ${OPENSEARCH_PASSWORD:Txz123456..}
 
 app:
+  opensearch:
+    auto-create-index: ${OPENSEARCH_AUTO_CREATE:true}
   misf-login:
-    lock-url: ${MISF_LOGIN_LOCK_URL:}
+    lock-url: ${MISF_LOGIN_LOCK_URL:http://localhost:8083/eservice_api/autoMonitoring/lockAccount}
   auth:
-    username: ${APP_AUTH_USERNAME:}
-    password: ${APP_AUTH_PASSWORD:}
+    username: ${APP_AUTH_USERNAME:xianzhi88889}
+    password: ${APP_AUTH_PASSWORD:xianzhi88889}
     keycloak:
-      enabled: ${KEYCLOAK_ENABLED:true}
-      base-url: ${KEYCLOAK_BASE_URL:}
-      realm: ${KEYCLOAK_REALM:}
-      client-id: ${KEYCLOAK_CLIENT_ID:}
+      enabled: ${KEYCLOAK_ENABLED:false}
+      base-url: ${KEYCLOAK_BASE_URL:http://192.168.28.188:8888/auth}
+      realm: ${KEYCLOAK_REALM:elife_jdzq}
+      client-id: ${KEYCLOAK_CLIENT_ID:eservice_jd}
       client-secret: ${KEYCLOAK_CLIENT_SECRET:}
     login-fail:
-      url: ${LOGIN_FAIL_URL:}
+      url: ${LOGIN_FAIL_URL:http://localhost:8083/eservice_api/MIS/updateLoginStatus}
     jwt:
-      secret: ${APP_JWT_SECRET:}
+      secret: ${APP_JWT_SECRET:dev-jwt-secret-change-in-production}
       expire-minutes: ${APP_JWT_EXPIRE_MINUTES:120}
     captcha:
       length: ${APP_CAPTCHA_LENGTH:6}

@@ -1,52 +1,8 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: auto-report-backend
-  datasource:
-    url: "${MSSQL_URL:jdbc:sqlserver://192.168.28.188:1433;databaseName=eservice_jd;encrypt=true;trustServerCertificate=true}"
-    username: ${MSSQL_USERNAME:SA}
-    password: ${MSSQL_PASSWORD:SA@123456}
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    hikari:
-      pool-name: MssqlHikariPool
-  datasource-secondary:
-    url: "${MSSQL_SECONDARY_URL:jdbc:sqlserver://192.168.28.188:1433;databaseName=ESERVICE_ADM;encrypt=true;trustServerCertificate=true}"
-    username: ${MSSQL_SECONDARY_USERNAME:SA}
-    password: ${MSSQL_SECONDARY_PASSWORD:SA@123456}
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    hikari:
-      pool-name: MssqlSecondaryHikariPool
-  jpa:
-    open-in-view: false
-    hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.SQLServer2012Dialect
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 100MB
-  redis:
-    host: ${REDIS_HOST:192.168.28.188}
-    port: ${REDIS_PORT:6379}
-    password: ${REDIS_PASSWORD:123456}
-    timeout: 3000ms
-    database: 3
-  session:
-    store-type: redis
-    timeout: 30m
-    redis:
-      repository-type: default
-
-opensearch:
-  host: ${OPENSEARCH_HOST:192.168.28.132}
-  port: ${OPENSEARCH_PORT:9200}
-  username: ${OPENSEARCH_USERNAME:admin}
-  password: ${OPENSEARCH_PASSWORD:Txz123456..}
-
-app:
-  opensearch:
-    auto-create-index: ${OPENSEARCH_AUTO_CREATE:true}
 
 logging:
   level:
