@@ -10,7 +10,7 @@ import { useLoginCaptcha } from './useLoginCaptcha';
 import { Path } from 'app/core/router/paths';
 import { login } from 'app/core/services/loginService';
 
-import homeImg from 'assets/img/pic/Home.jpg';
+import homeImg from 'assets/img/pic/Home.png';
 import userIcon from 'assets/img/pic/icon_friends-green.png';
 import loginLogo from 'assets/img/icons/my-logo.png';
 
